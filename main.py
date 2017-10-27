@@ -1,5 +1,5 @@
 # coding=utf-8
-import requests, json, time, random, datetime, threading
+import requests, json, time, random, datetime, threading, pickle
 
 sitekey = "6LcMxjMUAAAAALhKgWsmmRM2hAFzGSQqYcpmFqHx"
 
@@ -10,10 +10,11 @@ class Raffle(object):
 		# "https://colette.sneakers-raffle.fr/","https://starcow.sneakers-raffle.fr/"
 		self.shoes = [
 		{"url":"product/nike-air-jordan-1/","shoe_id":"2","shoe_name":"Nike Air Jordan 1","imgURL":"AirJordan.jpg"},
-		{"url":"product/nike-blazer/","shoe_id":"1","shoe_name":"Nike Blazer","imgURL":"Blazer.jpg"}]
+		{"url":"product/nike-blazer/","shoe_id":"3","shoe_name":"Nike Blazer","imgURL":"Blazer.jpg"}]
 		self.sites = [
 			{"url":"https://shinzo.sneakers-raffle.fr/","siteid":"2","nomtemplate":"nike-raffle-confirm-shinzo"},
-			{"url":"https://thebrokenarm.sneakers-raffle.fr/","siteid":"3","nomtemplate":"nike-raffle-confirm-the-broken-arm"}
+			{"url":"https://thebrokenarm.sneakers-raffle.fr/","siteid":"3","nomtemplate":"nike-raffle-confirm-the-broken-arm"},
+			{"url":"https://colette.sneakers-raffle.fr/","siteid":"4","nomtemplate":"nike-raffle-confirm-colette"}
 			]
 		# interval etc
 
@@ -23,7 +24,7 @@ class Raffle(object):
 			# register to each shoes.
 			for dshoes in self.shoes:
 
-				# 2captcha
+				# captcha
 				headers = {
 					"authority":"api.sneakers-raffle.fr",
 					"method":"POST",
@@ -43,7 +44,7 @@ class Raffle(object):
 						"email":identity['mail'],
 						"phone":identity['phone'],
 						"birthdate":identity['birthdate'],
-						"shoesize_id":identity['18'], #### SIZE
+						"shoesize_id":identity['shoesize'], #### SIZE
 						"completed_captcha":captcha,
 						"shoe_id":dshoes['shoe_id'],
 						"retailer_id":sts['siteid'],
@@ -64,6 +65,21 @@ class Raffle(object):
 							}
 						}
 					}
+					
+				# getting captcha from threading harvester
+				d = datetime.datetime.now().strftime('%H:%M')
+				print("Getting Captcha")
+				file = open(str(d)+'.txt','r') #r as reading only
+				FileList = pickle.load(file) #FileList the list where i want to pick out the captcharep
+				while len(FileList) == 0: #if len(FileList) it will wait for captcha scraper 
+					file = open(str(d)+'.txt','r')
+					FileList = pickle.load(file)
+				captchaREP = random.choice(FileList) 
+				FileList.remove(captchaREP)
+				file  = open(str(d)+'.txt','w')
+				pickle.dump(FileList,file)
+				print("Captcha retrieved")
+
 
 				req = s.post(i+z,headers=headers,payload=payload)
 				print(req)
@@ -72,6 +88,7 @@ class Raffle(object):
 if __name__ = "__main__":
 	ra = Raffle()
 	accounts = [
+		# 11 5US , 18 9US , 14 7US
 		{"fname":"pete","lname":"james","mail":"petejames@gmail.com","phone":"+33612334455","birthdate":"01/01/1998","shoesize":"18",},
 		]
 	# catpcha 
