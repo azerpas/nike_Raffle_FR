@@ -23,7 +23,7 @@ class Raffle(object):
 			# register to each shoes.
 			for dshoes in self.shoes:
 
-				# captcha
+				# 2captcha
 				headers = {
 					"authority":"api.sneakers-raffle.fr",
 					"method":"POST",
