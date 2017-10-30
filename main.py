@@ -5,7 +5,7 @@ sitekey = "6LcMxjMUAAAAALhKgWsmmRM2hAFzGSQqYcpmFqHx"
 
 		
 class Raffle(object):
-	def __init__(self,site,product):
+	def __init__(self):
 		self.s = requests.session()
 		# "https://colette.sneakers-raffle.fr/","https://starcow.sneakers-raffle.fr/"
 		self.shoes = [
@@ -83,7 +83,7 @@ class Raffle(object):
 
 				req = s.post(i+z,headers=headers,payload=payload)
 				print(req)
-				time.sleep(20000)
+				
 
 if __name__ = "__main__":
 	ra = Raffle()
