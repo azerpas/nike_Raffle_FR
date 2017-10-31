@@ -12,3 +12,5 @@ REQUIREMENTS:
 
 TO DO:
 - proxy support
+
+- Added Selenium support
