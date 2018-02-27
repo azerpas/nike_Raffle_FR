@@ -132,7 +132,7 @@ if __name__ == "__main__":
 	ra = Raffle()
 	accounts = [
 		# ["36","36.5","37.5","38","38.5","39","40","40.5","41","42","42.5","43","44","44.5","45","45.5","46","47","47.5","48.5","49.5"]
-{"fname":"Frederic","lname":"Ronaldo","mail":"fredericronaldo@yahoo.com","phone":"+33612603602","birthdate":"23/12/1997","shoesize":"42",},
+{"fname":"Frederic","lname":"Ronaldo","mail":"fredericronaldo@yahoo.com","phone":"+33612603602","birthdate":"23/12/1997","shoesize":"42"},
 ] 
 	# catpcha 
 	z = 0 
