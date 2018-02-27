@@ -1,16 +1,17 @@
 # nike_Raffle_FR
 Script made to mass register accounts to Nike Raffle, optimized for French raffles but can be easily adapted to UK,US, etc...
 
-ADD YOUR ACCOUNTS AT THE END OF THE FILE
+# Steps:
 
-NEED THE CAPTCHA HARVESTER I'VE MADE IN ORDER TO WORK
+- Add your accounts at the end of the script (keep the syntax as shown)
+- Run the captchaharvester.py in the same folder as the main script
+- Run the script
 
-REQUIREMENTS:
+## REQUIREMENTS:
 - requests
 - beautifulsoup
 - pickle
+- selenium
 
-TO DO:
+## TO DO:
 - proxy support
-
-- Added Selenium support
