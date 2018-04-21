@@ -20,3 +20,36 @@ I had no time to try simulate JavaScript logs for New Relic Browser so I'll reco
 
 ## TO DO:
 - proxy support
+
+## Installation 
+Been asked a lot
+
+- Check your Python version, must be 2.7
+```python --version```
+
+- Install pip:
+```sudo easy_install pip```
+
+Reboot terminal
+Install modules BeautifulSoup, requests, selenium:
+sudo pip requests selenium pickle
+
+Download Chromedriver:
+https://sites.google.com/a/chromium.org/chromedriver/
+
+Place it in Python path (or PATH):
+
+```/Library/Python/2.7```
+
+## Use
+- Modify your API key in captchaharvester.py & add your accounts in main or main2.py
+
+- Launch main script 
+
+```python main.py``` or ```python main2.py```
+
+- Launch Captcha Harvester:
+
+```python captchaharvester.py```
+
+Take notes that I won't include an option to generate dot gmail or domain mails, you'll need to generate them first and then add them.
